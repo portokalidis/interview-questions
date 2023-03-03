@@ -1,2 +1,2 @@
 Sources:
-- https://techdevguide.withgoogle.com/
+- https://techdevguide.withgoogle.com/paths/interview/
