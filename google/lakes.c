@@ -19,6 +19,7 @@ struct land {
 	size_t h;
 };
 
+#if 0
 static size_t calculate_right(const struct land *island, size_t num, int peak)
 {
 	if ((peak + 2) >= num)
@@ -82,6 +83,41 @@ static size_t calculate_volume(const struct land *island, size_t num)
 
 	size_t vol = calculate_right(island, num, max_i);
 	vol += calculate_left(island, num, max_i);
+
+	return vol;
+}
+#endif
+
+static size_t calculate_volume(const struct land *island, size_t num)
+{
+	size_t max = 0, max_i = 0, vol = 0;
+	size_t w = 0;
+
+	/* right */
+	for  (int i = 0; i < num; i++) {
+		if (island[i].h >= max) { /* Max height */
+			vol += w;
+			printf("%d: final add water %zu\n", i, vol);
+			w = 0;
+			max = island[i].h;
+			max_i = i;
+		} else {
+			w += max - island[i].h;
+			printf("%d: tentative add water %zu\n", i, w);
+		}
+	}
+
+	/* left */
+	max = w = 0;
+	for (int i = num - 1; i >= max_i; i--) {
+		if (island[i].h > max) {
+			vol += w;
+			w = 0;
+			max = island[i].h;
+		} else {
+			w += max - island[i].h;
+		}
+	}
 
 	return vol;
 }
