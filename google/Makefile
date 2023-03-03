@@ -1,5 +1,5 @@
 CFLAGS=-O2 -Wall
-PROGS=decompression
+PROGS=decompression lakes
 
 .PHONY: all clean
 
