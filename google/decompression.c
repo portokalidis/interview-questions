@@ -1,4 +1,6 @@
 /*
+ * https://techdevguide.withgoogle.com/resources/former-interview-question-compression-and-decompression
+ *
  * In this exercise, you're going to decompress a compressed string.
 
 Your input is a compressed string of the format number[string] and the decompressed output form should be the string written number times. For example:
